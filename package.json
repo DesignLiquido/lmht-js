@@ -1,0 +1,11 @@
+{
+    "name": "lmht-js",
+    "version": "0.0.0",
+    "description": "Biblioteca de transformação de documentos LMHT para HTML em JavaScript",
+    "dependencies": {
+        "saxon-js": "latest"
+    },
+    "devDependencies": {
+        "typescript": "^4.8.3"
+    }
+}
