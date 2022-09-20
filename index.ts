@@ -7,10 +7,11 @@ const doc = env.parseXmlFromString(env.readFile("./especificacao/lmht.xslt"));
 doc._saxonBaseUri = "file:///";
 
 const sef = SaxonJS.compile(doc);
-console.log(sef);
 
-/* SaxonJS.transform({
-    stylesheetFileName: "books.sef.json",
-    sourceFileName: "books.xml",
+SaxonJS.transform({
+    stylesheetInternal: sef,
+    sourceFileName: "./especificacao/exemplo.lmht",
     destination: "serialized"
-}, "async") */
+}, "async").then ((output: any) => {
+    console.log(output.principalResult)
+});
