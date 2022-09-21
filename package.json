@@ -9,6 +9,9 @@
     },
     "author": "Leonel Sanches da Silva",
     "license": "MIT",
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
     "dependencies": {
         "saxon-js": "latest"
     },
