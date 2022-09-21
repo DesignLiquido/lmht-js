@@ -4,7 +4,7 @@ import SaxonJS from 'saxon-js';
 /**
  * Classe que comanda a conversão de arquivos LMHT para HTML.
  */
-export default class ConversorLmht {
+export class ConversorLmht {
     plataforma: any;
 
     constructor() {

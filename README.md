@@ -23,7 +23,7 @@ Assim sendo, o arquivo `.sef.json` correspondente ao _commit_ apontado pelo subm
 ## Forma de uso
 
 ```js
-import ConversorLmht from "./conversor-lmht";
+import { ConversorLmht } from "@designliquido/lmht-js";
 
 const conversorLmht = new ConversorLmht();
 conversorLmht.converterPorArquivo("meu-arquivo.lmht").then(resultado => {
