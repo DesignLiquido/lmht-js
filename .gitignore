@@ -105,3 +105,6 @@ dist
 
 # npm
 package-lock.json
+
+# Projeto
+dist/
