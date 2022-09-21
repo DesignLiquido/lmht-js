@@ -2,3 +2,31 @@
 
 Biblioteca de transformação de documentos [LMHT](https://github.com/DesignLiquido/LMHT) para HTML para JavaScript.
 
+## Conformidade com especificação 
+
+`lmht-js` segue a especificação mais recente de LMHT. O projeto da especificação é referenciado aqui como um [submódulo git](https://git-scm.com/docs/git-submodule/pt_BR). No entanto, a biblioteca [`SaxonJS`](https://www.npmjs.com/package/saxon-js), dependência direta de `lmht-js`, pede um arquivo `.sef.json`, que pode ser gerado pelos comandos abaixo:
+
+PowerShell:
+```powershell
+xslt3 -t "-xsl:especificacao/lmht.xslt" "-export:lmht.sef.json" -nogo -relocate
+```
+
+bash, zsh:
+```sh
+xslt3 -t -xsl:especificacao/lmht.xslt -export:lmht.sef.json -nogo -relocate
+```
+
+O arquivo XSLT da especificação também pode ser usado, mas isso causa um atraso na carga de pelo menos 2 segundos, que é o tempo que leva para compilar a especificação de XSLT para `.sef.json`. Para entender como isso funciona, verifique o fonte `objeto-especificacao.ts`. 
+
+Assim sendo, o arquivo `.sef.json` correspondente ao _commit_ apontado pelo submódulo é versionado neste diretório raiz, e distribuído juntamente com o pacote NPM.
+
+## Forma de uso
+
+```js
+import ConversorLmht from "./conversor-lmht";
+
+const conversorLmht = new ConversorLmht();
+conversorLmht.converterPorArquivo("meu-arquivo.lmht").then(resultado => {
+    console.log(resultado);
+});
+```
