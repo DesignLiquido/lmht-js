@@ -2,7 +2,7 @@
   "name": "@designliquido/lmht-js",
   "version": "0.0.3",
   "description": "Biblioteca de transformação de documentos LMHT para HTML em JavaScript",
-  "main": "index.ts",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DesignLiquido/lmht-js.git"
