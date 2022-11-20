@@ -9,7 +9,8 @@
   },
   "scripts": {
     "empacotar": "rm -Rf ./dist && tsc && copyfiles -V ./README.md ./dist && copyfiles -V ./LICENSE ./dist && copyfiles -V ./package.json ./dist && copyfiles -V ./lmht.sef.json ./dist",
-    "publicar-npm": "npm publish ./dist --access public"
+    "publicar-npm": "npm publish ./dist --access public",
+    "testes-unitarios": "jest --coverage"
   },
   "author": "Leonel Sanches da Silva",
   "license": "MIT",

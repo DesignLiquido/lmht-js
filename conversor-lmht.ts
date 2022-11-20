@@ -24,4 +24,18 @@ export class ConversorLmht {
         }, "async");
         return saida.principalResult;
     }
+
+    /**
+     * Converte uma sequência de caracteres em LMHT para texto (serialização) HTML.
+     * @param caminhoArquivo O caminho do arquivo, podendo ser absoluto ou relativo.
+     * @returns O resultado da transformação de LMHT para HTML.
+     */
+    async converterPorTexto(texto: string) {
+        const saida: any = await SaxonJS.transform({
+            stylesheetFileName: caminho.join(__dirname, "lmht.sef.json"),
+            sourceText: texto,
+            destination: "serialized"
+        }, "async");
+        return saida.principalResult;
+    }
 }
