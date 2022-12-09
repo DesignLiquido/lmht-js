@@ -6,9 +6,11 @@ import SaxonJS from 'saxon-js';
  */
 export class ConversorLmht {
     plataforma: any;
+    diretorioEspecificacao: string;
 
-    constructor() {
+    constructor(diretorioEspecificacao: string = __dirname) {
         this.plataforma = SaxonJS.getPlatform();
+        this.diretorioEspecificacao = diretorioEspecificacao;
     }
 
     /**
@@ -18,7 +20,7 @@ export class ConversorLmht {
      */
     async converterPorArquivo(caminhoArquivo: string) {
         const saida: any = await SaxonJS.transform({
-            stylesheetFileName: caminho.join(__dirname, "lmht.sef.json"),
+            stylesheetFileName: caminho.join(this.diretorioEspecificacao, "lmht.sef.json"),
             sourceFileName: caminhoArquivo,
             destination: "serialized"
         }, "async");
@@ -31,8 +33,12 @@ export class ConversorLmht {
      * @returns O resultado da transformação de LMHT para HTML.
      */
     async converterPorTexto(texto: string) {
+        if (!texto) {
+            return "";
+        }
+
         const saida: any = await SaxonJS.transform({
-            stylesheetFileName: caminho.join(__dirname, "lmht.sef.json"),
+            stylesheetFileName: caminho.join(this.diretorioEspecificacao, "lmht.sef.json"),
             sourceText: texto,
             destination: "serialized"
         }, "async");

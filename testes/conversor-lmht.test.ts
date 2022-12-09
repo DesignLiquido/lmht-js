@@ -7,6 +7,11 @@ describe("Conversor", () => {
         conversorLmht = new ConversorLmht();
     });
 
+    it("Vazio", async () => {
+        const resultado = await conversorLmht.converterPorTexto("");
+        expect(resultado).toBe("");
+    });
+
     it("Trivial", async () => {
         const resultado = await conversorLmht.converterPorTexto("<lmht></lmht>");
         expect(resultado).toBeTruthy();
