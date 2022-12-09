@@ -53,11 +53,5 @@ Recomendamos fazer um _fork_ do projeto (ou seja, uma cópia em separado), modif
 Ao abrir uma _Pull Request_, fazemos alguns testes automatizados para verificar se sua modificação tem ou não problemas. Você pode fazer os mesmos testes no seu ambiente local usando o comando:
 
 ```bash
-yarn testes
-```
-
-Isso testa a modificação com os exemplos de linguagem que temos no repositório. Para testar outros aspectos, use:
-
-```bash
 yarn testes-unitarios
 ```
