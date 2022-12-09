@@ -7,10 +7,34 @@ import SaxonJS from 'saxon-js';
 export class ConversorLmht {
     plataforma: any;
     diretorioEspecificacao: string;
+    enderecoEspecificacao: string;
 
-    constructor(diretorioEspecificacao: string = __dirname) {
+    constructor(diretorioEspecificacao: string = __dirname, enderecoEspecificacao: string = null) {
         this.plataforma = SaxonJS.getPlatform();
         this.diretorioEspecificacao = diretorioEspecificacao;
+        this.enderecoEspecificacao = enderecoEspecificacao;
+    }
+
+    private objetoParaTransformacao(
+            texto: string = null, 
+            caminhoArquivo: string = null) {
+        let objeto = {
+            destination: "serialized"
+        };
+
+        if (texto) {
+            objeto['sourceText'] = texto;
+        } else if (caminhoArquivo) {
+            objeto['sourceFileName'] = caminhoArquivo;
+        } 
+        
+        if (this.enderecoEspecificacao) {
+            objeto['stylesheetLocation'] = this.enderecoEspecificacao;
+        } else {
+            objeto['stylesheetFileName'] = caminho.join(this.diretorioEspecificacao, "lmht.sef.json");
+        }
+
+        return objeto;
     }
 
     /**
@@ -19,11 +43,8 @@ export class ConversorLmht {
      * @returns O resultado da transformação de LMHT para HTML.
      */
     async converterPorArquivo(caminhoArquivo: string) {
-        const saida: any = await SaxonJS.transform({
-            stylesheetFileName: caminho.join(this.diretorioEspecificacao, "lmht.sef.json"),
-            sourceFileName: caminhoArquivo,
-            destination: "serialized"
-        }, "async");
+        const objetoParaTransformacao = this.objetoParaTransformacao(null, caminhoArquivo);
+        const saida: any = await SaxonJS.transform(objetoParaTransformacao, "async");
         return saida.principalResult;
     }
 
@@ -37,11 +58,8 @@ export class ConversorLmht {
             return "";
         }
 
-        const saida: any = await SaxonJS.transform({
-            stylesheetFileName: caminho.join(this.diretorioEspecificacao, "lmht.sef.json"),
-            sourceText: texto,
-            destination: "serialized"
-        }, "async");
+        const objetoParaTransformacao = this.objetoParaTransformacao(texto, null);
+        const saida: any = await SaxonJS.transform(objetoParaTransformacao, "async");
         return saida.principalResult;
     }
 }
