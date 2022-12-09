@@ -7,12 +7,12 @@ import SaxonJS from 'saxon-js';
 export class ConversorLmht {
     plataforma: any;
     diretorioEspecificacao: string;
-    enderecoEspecificacao: string;
+    enderecoBaseEspecificacao: string;
 
-    constructor(diretorioEspecificacao: string = __dirname, enderecoEspecificacao: string = null) {
+    constructor(diretorioEspecificacao: string = __dirname, enderecoBaseEspecificacao: string = null) {
         this.plataforma = SaxonJS.getPlatform();
         this.diretorioEspecificacao = diretorioEspecificacao;
-        this.enderecoEspecificacao = enderecoEspecificacao;
+        this.enderecoBaseEspecificacao = enderecoBaseEspecificacao;
     }
 
     private objetoParaTransformacao(
@@ -28,8 +28,8 @@ export class ConversorLmht {
             objeto['sourceFileName'] = caminhoArquivo;
         } 
         
-        if (this.enderecoEspecificacao) {
-            objeto['stylesheetLocation'] = this.enderecoEspecificacao;
+        if (this.enderecoBaseEspecificacao) {
+            objeto['stylesheetBaseURI'] = this.enderecoBaseEspecificacao + "/lmht.sef.json";
         } else {
             objeto['stylesheetFileName'] = caminho.join(this.diretorioEspecificacao, "lmht.sef.json");
         }
