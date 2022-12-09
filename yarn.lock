@@ -3682,10 +3682,10 @@ safe-regex-test@^1.0.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-saxon-js@latest:
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/saxon-js/-/saxon-js-2.4.0.tgz"
-  integrity sha512-PQ0EaoAECzYAAP6d7DZx4aRxVYLDTD3JPsEKxNpbR5q20d4/6S1cHjgaFm0O1roCxkBu4e/3jB71HL2hPz1T/w==
+saxon-js@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/saxon-js/-/saxon-js-2.5.0.tgz#adfdb4b2df5733bd6781eccc28da170d31278826"
+  integrity sha512-bdUmnW//mNha5OFYGDA/rqh+4ZuHPtYUQor8yqnOIhFb0JxD+mauFuZbp2GpEwHnTEpFTQ8OcoVFLcDxu7SXAg==
   dependencies:
     axios "^0.24.0"
 
