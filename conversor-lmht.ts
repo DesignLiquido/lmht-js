@@ -29,7 +29,8 @@ export class ConversorLmht {
         } 
         
         if (this.enderecoBaseEspecificacao) {
-            objeto['stylesheetBaseURI'] = this.enderecoBaseEspecificacao + "/lmht.sef.json";
+            objeto['stylesheetBaseURI'] = this.enderecoBaseEspecificacao;
+            objeto['stylesheetLocation'] = "lmht.sef.json";
         } else {
             objeto['stylesheetFileName'] = caminho.join(this.diretorioEspecificacao, "lmht.sef.json");
         }
