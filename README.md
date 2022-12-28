@@ -15,7 +15,7 @@ No entanto, a biblioteca [`SaxonJS`](https://www.npmjs.com/package/saxon-js), de
 PowerShell:
 ```powershell
 xslt3 -t "-xsl:especificacao/lmht.xslt" "-export:lmht.sef.json" -nogo -relocate
-xslt3 -t "-xsl:especificacao/lmht-reverso.xslt" "-export:lmht-reverso.sef.json" -nogo -relocate
+xslt3 -t "-xsl:especificacao/lmht-reverso-xml10.xslt" "-export:lmht-reverso-xml10.sef.json" -nogo -relocate
 ```
 
 bash, zsh:
@@ -28,13 +28,26 @@ O arquivo XSLT da especificação ou da especificação reversa também podem se
 
 Assim sendo, os arquivos `.sef.json` correspondentes ao _commit_ apontado pelo submódulo são versionados neste diretório raiz, e distribuídos juntamente com o pacote NPM.
 
-## Forma de uso
+### Compatibilidade com XML
+
+SaxonJS não trabalha com XML 1.1, e por isso a especificação com XML 1.0 é usada aqui.
+
+## Formas de uso
 
 ```js
 import { ConversorLmht } from "@designliquido/lmht-js";
 
 const conversorLmht = new ConversorLmht();
 conversorLmht.converterPorArquivo("meu-arquivo.lmht").then(resultado => {
+    console.log(resultado);
+});
+```
+
+```js
+import { ConversorHtml } from "@designliquido/lmht-js";
+
+const conversorHtml = new ConversorHtml();
+conversorHtml.converterPorArquivo("meu-arquivo.lmht").then(resultado => {
     console.log(resultado);
 });
 ```

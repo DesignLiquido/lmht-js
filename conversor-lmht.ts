@@ -8,6 +8,7 @@ export class ConversorLmht {
     plataforma: any;
     diretorioEspecificacao: string;
     enderecoBaseEspecificacao: string;
+    arquivoSef: string = 'lmht.sef.json';
 
     constructor(diretorioEspecificacao: string = __dirname, enderecoBaseEspecificacao: string = null) {
         this.plataforma = SaxonJS.getPlatform();
@@ -30,9 +31,9 @@ export class ConversorLmht {
         
         if (this.enderecoBaseEspecificacao) {
             objeto['stylesheetBaseURI'] = this.enderecoBaseEspecificacao;
-            objeto['stylesheetLocation'] = "lmht.sef.json";
+            objeto['stylesheetLocation'] = this.arquivoSef;
         } else {
-            objeto['stylesheetFileName'] = caminho.join(this.diretorioEspecificacao, "lmht.sef.json");
+            objeto['stylesheetFileName'] = caminho.join(this.diretorioEspecificacao, this.arquivoSef);
         }
 
         return objeto;

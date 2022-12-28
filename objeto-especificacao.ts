@@ -10,10 +10,10 @@ import SaxonJS from 'saxon-js';
  * @param plataforma 
  * @returns 
  */
-export function montarObjetoEspecificacao(plataforma: any): any {
+export function montarObjetoEspecificacao(plataforma: any, reversa: boolean = false): any {
     const documento = plataforma.parseXmlFromString(
         plataforma.readFile(
-            caminho.join(__dirname, "./especificacao/lmht.xslt")));
+            caminho.join(__dirname, reversa ? "./especificacao/lmht-reverso.xslt" : "./especificacao/lmht.xslt")));
 
     // Artifício técnico para evitar o seguinte erro: 
     // "Required cardinality of value of parameter $static-base-uri is exactly one; supplied value is empty"

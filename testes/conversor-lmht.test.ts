@@ -1,6 +1,6 @@
 import { ConversorLmht } from "../conversor-lmht"
 
-describe("Conversor", () => {
+describe("Conversor LMHT", () => {
     let conversorLmht: ConversorLmht;
 
     beforeEach(() => {
