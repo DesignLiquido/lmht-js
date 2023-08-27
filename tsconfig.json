@@ -9,5 +9,11 @@
         "declaration": true,
         "esModuleInterop": true
     },
-    "exclude": ["babel.config.js", "dist/**/*"]
+    "exclude": [
+        "babel.config.js",
+        "jest.config.ts",
+        "coverage/**/*",
+        "testes/**/*",
+        "dist/**/*"
+    ]
 }

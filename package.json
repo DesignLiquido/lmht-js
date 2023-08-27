@@ -39,12 +39,20 @@
       "to": "dist/LICENSE"
     },
     {
-      "from": "lmht.sef.json",
-      "to": "dist/lmht.sef.json"
+      "from": "especificacao/lmht.xslt",
+      "to": "dist/especificacao/lmht.xslt"
     },
     {
-      "from": "lmht-reverso-xml10.sef.json",
-      "to": "dist/lmht-reverso-xml10.sef.json"
+      "from": "especificacao/lmht10.xslt",
+      "to": "dist/especificacao/lmht10.xslt"
+    },
+    {
+      "from": "especificacao/lmht-reverso.xslt",
+      "to": "dist/especificacao/lmht-reverso.xslt"
+    },
+    {
+      "from": "especificacao/lmht-reverso-xml10.xslt",
+      "to": "dist/especificacao/lmht-reverso-xml10.xslt"
     },
     {
       "from": "package.json",
