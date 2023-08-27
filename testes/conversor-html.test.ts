@@ -4,16 +4,16 @@ describe("Conversor HTML", () => {
     let conversorHtml: ConversorHtml;
 
     beforeEach(() => {
-        conversorHtml = new ConversorHtml();
+        conversorHtml = new ConversorHtml("./especificacao/lmht-reverso-xml10.xslt");
     });
 
-    it("Vazio", async () => {
-        const resultado = await conversorHtml.converterPorTexto("");
+    it("Vazio", () => {
+        const resultado = conversorHtml.converterPorTexto("");
         expect(resultado).toBe("");
     });
 
-    it("Trivial", async () => {
-        const resultado = await conversorHtml.converterPorTexto("<html></html>");
+    it("Trivial", () => {
+        const resultado = conversorHtml.converterPorTexto("<html></html>");
         expect(resultado).toBeTruthy();
     });
 });

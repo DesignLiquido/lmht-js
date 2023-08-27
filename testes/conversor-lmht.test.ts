@@ -4,16 +4,16 @@ describe("Conversor LMHT", () => {
     let conversorLmht: ConversorLmht;
 
     beforeEach(() => {
-        conversorLmht = new ConversorLmht();
+        conversorLmht = new ConversorLmht("./especificacao/lmht10.xslt");
     });
 
-    it("Vazio", async () => {
-        const resultado = await conversorLmht.converterPorTexto("");
+    it("Vazio", () => {
+        const resultado = conversorLmht.converterPorTexto("");
         expect(resultado).toBe("");
     });
 
-    it("Trivial", async () => {
-        const resultado = await conversorLmht.converterPorTexto("<lmht></lmht>");
+    it("Trivial", () => {
+        const resultado = conversorLmht.converterPorTexto("<lmht></lmht>");
         expect(resultado).toBeTruthy();
     });
 });

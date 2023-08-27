@@ -1031,13 +1031,6 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-axios@^0.24.0:
-  version "0.24.0"
-  resolved "https://registry.npmjs.org/axios/-/axios-0.24.0.tgz"
-  integrity sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==
-  dependencies:
-    follow-redirects "^1.14.4"
-
 axios@^1.1.3:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.2.1.tgz#44cf04a3c9f0c2252ebd85975361c026cb9f864a"
@@ -1938,7 +1931,7 @@ find-up@^4.0.0, find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-follow-redirects@^1.14.4, follow-redirects@^1.15.0:
+follow-redirects@^1.15.0:
   version "1.15.2"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
@@ -4012,13 +4005,6 @@ saxes@^6.0.0:
   dependencies:
     xmlchars "^2.2.0"
 
-saxon-js@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/saxon-js/-/saxon-js-2.5.0.tgz#adfdb4b2df5733bd6781eccc28da170d31278826"
-  integrity sha512-bdUmnW//mNha5OFYGDA/rqh+4ZuHPtYUQor8yqnOIhFb0JxD+mauFuZbp2GpEwHnTEpFTQ8OcoVFLcDxu7SXAg==
-  dependencies:
-    axios "^0.24.0"
-
 semver-diff@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/semver-diff/-/semver-diff-4.0.0.tgz#3afcf5ed6d62259f5c72d0d5d50dffbdc9680df5"
@@ -4743,17 +4729,12 @@ xregexp@2.0.0:
   resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-2.0.0.tgz#52a63e56ca0b84a7f3a5f3d61872f126ad7a5943"
   integrity sha512-xl/50/Cf32VsGq/1R8jJE5ajH1yMCQkpmoS10QbFZWl2Oor4H0Me64Pu2yxvsRWK3m6soJbmGfzSR7BYmDcWAA==
 
-xslt-processor@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/xslt-processor/-/xslt-processor-1.2.4.tgz#158ef7659ccec501368939a554a759eb1bf154f2"
-  integrity sha512-ZjgtmZ5uJcgPvv+u5YUzvw+WLLnLUWZjowxwZAMry7lxHTg8biod+n2Z/xh95SDIqXz62dhYTBw8CtDOyV0oNQ==
+xslt-processor@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/xslt-processor/-/xslt-processor-1.2.5.tgz#492027f388c5abec21dc60f03dc6a44f22285a2f"
+  integrity sha512-W9fJH91+T5wWpVChwh3hzlJNRPTp03Bz+wSC+N0dvCyoR24ICwqgCqEYmYoB+Zyvy/JR4Npr9aMlmjlmiUiJ6A==
   dependencies:
     he "^1.2.0"
-
-xslt@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/xslt/-/xslt-0.9.1.tgz#e7f401af1b9eaa728b0bd63f49787dd6d0845178"
-  integrity sha512-2eFkaiFRVkVzedBKYv3MUYmvvK9103NTNFGsyFhLim0Pad0q5yXp2j9tQM2lFW1gFr9fSXV70RRrdcRM7YdRcg==
 
 y18n@^5.0.5:
   version "5.0.8"

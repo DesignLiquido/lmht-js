@@ -1,22 +1,23 @@
 import * as caminho from 'path';
-import SaxonJS from 'saxon-js';
+import * as sistemaArquivos from 'fs';
+
+import { Xslt, xmlParse } from 'xslt-processor';
+import { XDocument } from 'xslt-processor/dom';
 
 /**
  * Classe que comanda a conversão de arquivos LMHT para HTML.
  */
 export class ConversorLmht {
-    plataforma: any;
-    diretorioEspecificacao: string;
-    enderecoBaseEspecificacao: string;
-    arquivoSef: string = 'lmht.sef.json';
+    especificacao: XDocument;
+    processadorXslt: Xslt;
 
-    constructor(diretorioEspecificacao: string = __dirname, enderecoBaseEspecificacao: string = null) {
-        this.plataforma = SaxonJS.getPlatform();
-        this.diretorioEspecificacao = diretorioEspecificacao;
-        this.enderecoBaseEspecificacao = enderecoBaseEspecificacao;
+    constructor(caminhoEspecificacao: string) {
+        this.processadorXslt = new Xslt();
+        const textoEspecificacao = sistemaArquivos.readFileSync(caminhoEspecificacao).toString();
+        this.especificacao = xmlParse(textoEspecificacao);
     }
 
-    private objetoParaTransformacao(
+    /* private objetoParaTransformacao(
             texto: string = null, 
             caminhoArquivo: string = null) {
         let objeto = {
@@ -37,31 +38,37 @@ export class ConversorLmht {
         }
 
         return objeto;
-    }
+    } */
 
     /**
      * Converte um arquivo de LMHT para texto (serialização) HTML.
-     * @param caminhoArquivo O caminho do arquivo, podendo ser absoluto ou relativo.
+     * @param caminhoArquivo O caminho do arquivo. Deve ser absoluto.
      * @returns O resultado da transformação de LMHT para HTML.
      */
-    async converterPorArquivo(caminhoArquivo: string) {
-        const objetoParaTransformacao = this.objetoParaTransformacao(null, caminhoArquivo);
+    converterPorArquivo(caminhoArquivo: string) {
+        /* const objetoParaTransformacao = this.objetoParaTransformacao(null, caminhoArquivo);
         const saida: any = await SaxonJS.transform(objetoParaTransformacao, "async");
-        return saida.principalResult;
+        return saida.principalResult; */
+        const textoArquivo = sistemaArquivos.readFileSync(caminhoArquivo).toString();
+        const xml = xmlParse(textoArquivo);
+        return this.processadorXslt.xsltProcess(xml, this.especificacao);
     }
 
     /**
      * Converte uma sequência de caracteres em LMHT para texto (serialização) HTML.
-     * @param caminhoArquivo O caminho do arquivo, podendo ser absoluto ou relativo.
+     * @param caminhoArquivo O caminho do arquivo. Deve ser absoluto.
      * @returns O resultado da transformação de LMHT para HTML.
      */
-    async converterPorTexto(texto: string) {
+    converterPorTexto(texto: string) {
         if (!texto) {
             return "";
         }
 
-        const objetoParaTransformacao = this.objetoParaTransformacao(texto, null);
+        const xml = xmlParse(texto);
+        return this.processadorXslt.xsltProcess(xml, this.especificacao);
+
+        /* const objetoParaTransformacao = this.objetoParaTransformacao(texto, null);
         const saida: any = await SaxonJS.transform(objetoParaTransformacao, "async");
-        return saida.principalResult;
+        return saida.principalResult; */
     }
 }

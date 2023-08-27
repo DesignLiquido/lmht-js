@@ -20,9 +20,7 @@
   },
   "dependencies": {
     "jsdom": "^21.1.1",
-    "saxon-js": "^2.5.0",
-    "xslt": "^0.9.1",
-    "xslt-processor": "^1.2.4"
+    "xslt-processor": "^1.2.5"
   },
   "devDependencies": {
     "@types/jest": "^29.0.3",
