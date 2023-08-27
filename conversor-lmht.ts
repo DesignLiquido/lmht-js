@@ -16,33 +16,10 @@ export class ConversorLmht {
         if (!caminhoEspecificacao) {
             caminhoEspecificacao = caminho.join(__dirname, "./especificacao/lmht10.xslt");
         }
-        
+
         const textoEspecificacao = sistemaArquivos.readFileSync(caminhoEspecificacao).toString();
         this.especificacao = xmlParse(textoEspecificacao);
     }
-
-    /* private objetoParaTransformacao(
-            texto: string = null, 
-            caminhoArquivo: string = null) {
-        let objeto = {
-            destination: "serialized"
-        };
-
-        if (texto) {
-            objeto['sourceText'] = texto;
-        } else if (caminhoArquivo) {
-            objeto['sourceFileName'] = caminhoArquivo;
-        } 
-        
-        if (this.enderecoBaseEspecificacao) {
-            objeto['stylesheetBaseURI'] = this.enderecoBaseEspecificacao;
-            objeto['stylesheetLocation'] = this.arquivoSef;
-        } else {
-            objeto['stylesheetFileName'] = caminho.join(this.diretorioEspecificacao, this.arquivoSef);
-        }
-
-        return objeto;
-    } */
 
     /**
      * Converte um arquivo de LMHT para texto (serialização) HTML.
@@ -50,9 +27,6 @@ export class ConversorLmht {
      * @returns O resultado da transformação de LMHT para HTML.
      */
     converterPorArquivo(caminhoArquivo: string) {
-        /* const objetoParaTransformacao = this.objetoParaTransformacao(null, caminhoArquivo);
-        const saida: any = await SaxonJS.transform(objetoParaTransformacao, "async");
-        return saida.principalResult; */
         const textoArquivo = sistemaArquivos.readFileSync(caminhoArquivo).toString();
         const xml = xmlParse(textoArquivo);
         return this.processadorXslt.xsltProcess(xml, this.especificacao);
@@ -70,9 +44,5 @@ export class ConversorLmht {
 
         const xml = xmlParse(texto);
         return this.processadorXslt.xsltProcess(xml, this.especificacao);
-
-        /* const objetoParaTransformacao = this.objetoParaTransformacao(texto, null);
-        const saida: any = await SaxonJS.transform(objetoParaTransformacao, "async");
-        return saida.principalResult; */
     }
 }

@@ -15,11 +15,27 @@ console.log(resultado);
 ```
 
 ```js
+import { ConversorLmht } from "@designliquido/lmht-js";
+
+const conversorLmht = new ConversorLmht();
+const resultado = conversorLmht.converterPorTexto("<lmht><cabeca><titulo>Teste</titulo></cabeca><corpo>Teste</corpo></lmht>");
+console.log(resultado); // Resultado: <html><head><title>Teste</title></head><body>Teste</body></html>
+```
+
+```js
 import { ConversorHtml } from "@designliquido/lmht-js";
 
 const conversorHtml = new ConversorHtml();
-const resultado = conversorHtml.converterPorArquivo("meu-arquivo.lmht");
+const resultado = conversorHtml.converterPorArquivo("meu-arquivo.html");
 console.log(resultado);
+```
+
+```js
+import { ConversorHtml } from "@designliquido/lmht-js";
+
+const conversorHtml = new ConversorHtml();
+const resultado = conversorHtml.converterPorTexto("<html><head><title>Teste</title></head><body>Teste</body></html>");
+console.log(resultado); // Resultado: <lmht><cabeca><titulo>Teste</titulo></cabeca><corpo>Teste</corpo></lmht>
 ```
 
 ### Até a versão 0.2.0
