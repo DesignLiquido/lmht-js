@@ -11,8 +11,12 @@ export class ConversorLmht {
     especificacao: XDocument;
     processadorXslt: Xslt;
 
-    constructor(caminhoEspecificacao: string) {
+    constructor(caminhoEspecificacao?: string) {
         this.processadorXslt = new Xslt();
+        if (!caminhoEspecificacao) {
+            caminhoEspecificacao = caminho.join(__dirname, "./especificacao/lmht10.xslt");
+        }
+        
         const textoEspecificacao = sistemaArquivos.readFileSync(caminhoEspecificacao).toString();
         this.especificacao = xmlParse(textoEspecificacao);
     }

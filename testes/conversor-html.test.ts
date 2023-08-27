@@ -4,7 +4,7 @@ describe("Conversor HTML", () => {
     let conversorHtml: ConversorHtml;
 
     beforeEach(() => {
-        conversorHtml = new ConversorHtml("./especificacao/lmht-reverso-xml10.xslt");
+        conversorHtml = new ConversorHtml();
     });
 
     it("Vazio", () => {

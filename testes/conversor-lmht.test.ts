@@ -4,7 +4,7 @@ describe("Conversor LMHT", () => {
     let conversorLmht: ConversorLmht;
 
     beforeEach(() => {
-        conversorLmht = new ConversorLmht("./especificacao/lmht10.xslt");
+        conversorLmht = new ConversorLmht();
     });
 
     it("Vazio", () => {
