@@ -2,6 +2,13 @@
 
 Biblioteca de transformação de documentos [LMHT](https://github.com/DesignLiquido/LMHT) para HTML para JavaScript.
 
+<p align="center">
+    <img src="./recursos/imagens/badge-statements.svg" />
+    <img src="./recursos/imagens/badge-lines.svg" />
+    <img src="./recursos/imagens/badge-functions.svg" />
+    <img src="./recursos/imagens/badge-branches.svg" />
+</p>
+
 ## Formas de uso
 
 ### Atual, versão 0.3.0 em diante
