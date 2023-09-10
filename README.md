@@ -3,6 +3,19 @@
 Biblioteca de transformação de documentos [LMHT](https://github.com/DesignLiquido/LMHT) para HTML para JavaScript.
 
 <p align="center">
+    <a href="https://github.com/DesignLiquido/lmht-js/issues" target="_blank">
+        <img src="https://img.shields.io/github/issues/Designliquido/lmht-js" />
+    </a>
+    <img src="https://img.shields.io/github/stars/Designliquido/lmht-js" />
+    <img src="https://img.shields.io/github/forks/Designliquido/lmht-js" />
+    <a href="https://www.npmjs.com/package/lmht-js" target="_blank">
+        <img src="https://img.shields.io/npm/v/lmht-js" />
+    </a>
+    <img src="https://img.shields.io/npm/dw/lmht-js" />
+    <img src="https://img.shields.io/github/license/DesignLiquido/lmht-js" />
+</p>
+
+<p align="center">
     <img src="./recursos/imagens/badge-statements.svg" />
     <img src="./recursos/imagens/badge-lines.svg" />
     <img src="./recursos/imagens/badge-functions.svg" />
