@@ -8,10 +8,10 @@ Biblioteca de transformação de documentos [LMHT](https://github.com/DesignLiqu
     </a>
     <img src="https://img.shields.io/github/stars/Designliquido/lmht-js" />
     <img src="https://img.shields.io/github/forks/Designliquido/lmht-js" />
-    <a href="https://www.npmjs.com/package/lmht-js" target="_blank">
-        <img src="https://img.shields.io/npm/v/lmht-js" />
+    <a href="https://www.npmjs.com/package/@designliquido/lmht-js" target="_blank">
+        <img src="https://img.shields.io/npm/v/@designliquido/lmht-js" />
     </a>
-    <img src="https://img.shields.io/npm/dw/lmht-js" />
+    <img src="https://img.shields.io/npm/dw/@designliquido/lmht-js" />
     <img src="https://img.shields.io/github/license/DesignLiquido/lmht-js" />
 </p>
 
