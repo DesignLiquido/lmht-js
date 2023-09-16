@@ -1,7 +1,7 @@
 import * as caminho from 'path';
 import * as sistemaArquivos from 'fs';
 
-import { Xslt, xmlParse } from 'xslt-processor';
+import { Xslt, XmlParser } from 'xslt-processor';
 import { XDocument } from 'xslt-processor/dom';
 
 /**
@@ -10,15 +10,18 @@ import { XDocument } from 'xslt-processor/dom';
 export class ConversorLmht {
     especificacao: XDocument;
     processadorXslt: Xslt;
+    avaliadorXml: XmlParser;
 
     constructor(caminhoEspecificacao?: string) {
         this.processadorXslt = new Xslt();
+        this.avaliadorXml = new XmlParser();
+
         if (!caminhoEspecificacao) {
             caminhoEspecificacao = caminho.join(__dirname, "./especificacao/lmht10.xslt");
         }
 
         const textoEspecificacao = sistemaArquivos.readFileSync(caminhoEspecificacao).toString();
-        this.especificacao = xmlParse(textoEspecificacao);
+        this.especificacao = this.avaliadorXml.xmlParse(textoEspecificacao);
     }
 
     /**
@@ -28,7 +31,7 @@ export class ConversorLmht {
      */
     converterPorArquivo(caminhoArquivo: string) {
         const textoArquivo = sistemaArquivos.readFileSync(caminhoArquivo).toString();
-        const xml = xmlParse(textoArquivo);
+        const xml = this.avaliadorXml.xmlParse(textoArquivo);
         return this.processadorXslt.xsltProcess(xml, this.especificacao);
     }
 
@@ -42,7 +45,7 @@ export class ConversorLmht {
             return "";
         }
 
-        const xml = xmlParse(texto);
+        const xml = this.avaliadorXml.xmlParse(texto);
         return this.processadorXslt.xsltProcess(xml, this.especificacao);
     }
 }
