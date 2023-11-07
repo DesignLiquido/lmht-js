@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "jsdom": "^21.1.1",
-    "xslt-processor": "^2.1.0"
+    "xslt-processor": "^2.1.1"
   },
   "devDependencies": {
     "@types/jest": "^29.5.4",

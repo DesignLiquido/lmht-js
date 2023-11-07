@@ -16,4 +16,18 @@ describe("Conversor HTML", () => {
         const resultado = conversorHtml.converterPorTexto("<html></html>");
         expect(resultado).toBeTruthy();
     });
+
+    it("Cabeça e corpo", () => {
+        const html = `<html>
+        <head>
+            <title>About - Simple Blog Template</title>
+            <link href="css/bootstrap.min.css" rel="stylesheet">
+        </head>
+        <body>
+            <p class="anything">This is a paragraph with a class</p>
+        </body>
+        </html>`;
+        const resultado = conversorHtml.converterPorTexto(html);
+        expect(resultado).toBe(`<lmht><cabeça><título>About - Simple Blog Template</título><recurso destino="css/bootstrap.min.css" tipo="stylesheet"/></cabeça></lmht>`);
+    });
 });
