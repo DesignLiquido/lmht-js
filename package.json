@@ -1,6 +1,6 @@
 {
   "name": "@designliquido/lmht-js",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "Biblioteca de transformação de documentos LMHT para HTML em JavaScript",
   "main": "index.js",
   "repository": {
