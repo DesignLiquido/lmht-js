@@ -4880,10 +4880,10 @@ xregexp@2.0.0:
   resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-2.0.0.tgz#52a63e56ca0b84a7f3a5f3d61872f126ad7a5943"
   integrity sha512-xl/50/Cf32VsGq/1R8jJE5ajH1yMCQkpmoS10QbFZWl2Oor4H0Me64Pu2yxvsRWK3m6soJbmGfzSR7BYmDcWAA==
 
-xslt-processor@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/xslt-processor/-/xslt-processor-2.2.0.tgz#ce4a91fcb3863c80b2b5c57854e8bc1d0a3a37bc"
-  integrity sha512-gmBVzwqWpVr72H/b71AK2LhNQARsj3RxPX8tQRXsLPJ0dagVmu6JmFzhsTm6kK0wuDJ5NLQQ2V1GzRKlK6zMfA==
+xslt-processor@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/xslt-processor/-/xslt-processor-2.3.1.tgz#a1a0ca1cc85899425e975633cdde56601a2046ec"
+  integrity sha512-wVGMrWqrVdvnjx9HUcfqIC35DacLsT6A4TUQKkeT0q7wOvm7ladzpj8L44Mw2VcXuMqYTqIO5uHJQtohGJHtpQ==
   dependencies:
     he "^1.2.0"
 
