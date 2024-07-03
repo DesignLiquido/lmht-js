@@ -3506,7 +3506,7 @@ node-fetch@3.3.0:
     fetch-blob "^3.1.4"
     formdata-polyfill "^4.0.10"
 
-node-fetch@^2.6.7:
+node-fetch@^2.6.7, node-fetch@cjs:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
@@ -4880,12 +4880,13 @@ xregexp@2.0.0:
   resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-2.0.0.tgz#52a63e56ca0b84a7f3a5f3d61872f126ad7a5943"
   integrity sha512-xl/50/Cf32VsGq/1R8jJE5ajH1yMCQkpmoS10QbFZWl2Oor4H0Me64Pu2yxvsRWK3m6soJbmGfzSR7BYmDcWAA==
 
-xslt-processor@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/xslt-processor/-/xslt-processor-2.3.1.tgz#a1a0ca1cc85899425e975633cdde56601a2046ec"
-  integrity sha512-wVGMrWqrVdvnjx9HUcfqIC35DacLsT6A4TUQKkeT0q7wOvm7ladzpj8L44Mw2VcXuMqYTqIO5uHJQtohGJHtpQ==
+xslt-processor@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/xslt-processor/-/xslt-processor-3.0.0.tgz#93fe260700ac3d4bde6fc3e342bfce54b88761ff"
+  integrity sha512-gqYOwg8ZZ8e0iGxR/C41Qc4m9pJoQonrxGzuUoSLiX5Io0qGzQxyh1XXAq2kbHv8hq38QkfrhDWaBdwwLi8+kQ==
   dependencies:
     he "^1.2.0"
+    node-fetch cjs
 
 y18n@^5.0.5:
   version "5.0.8"
