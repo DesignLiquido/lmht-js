@@ -4880,10 +4880,10 @@ xregexp@2.0.0:
   resolved "https://registry.yarnpkg.com/xregexp/-/xregexp-2.0.0.tgz#52a63e56ca0b84a7f3a5f3d61872f126ad7a5943"
   integrity sha512-xl/50/Cf32VsGq/1R8jJE5ajH1yMCQkpmoS10QbFZWl2Oor4H0Me64Pu2yxvsRWK3m6soJbmGfzSR7BYmDcWAA==
 
-xslt-processor@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/xslt-processor/-/xslt-processor-3.0.0.tgz#93fe260700ac3d4bde6fc3e342bfce54b88761ff"
-  integrity sha512-gqYOwg8ZZ8e0iGxR/C41Qc4m9pJoQonrxGzuUoSLiX5Io0qGzQxyh1XXAq2kbHv8hq38QkfrhDWaBdwwLi8+kQ==
+xslt-processor@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/xslt-processor/-/xslt-processor-3.0.1.tgz#6f133a8974a1cc345b7bdefd57e48f25ba352bfd"
+  integrity sha512-XELmhWnCFHfsfAhl0jKetcVIzSnZt90lOcPPCzoEc4+ZqfXGXxddo7q93bc0piDKLKF8EP2OCKc0EVnPwFd2aA==
   dependencies:
     he "^1.2.0"
     node-fetch cjs

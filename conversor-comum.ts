@@ -19,10 +19,10 @@ export abstract class ConversorComum {
      * @param caminhoArquivo O caminho do arquivo. Deve ser absoluto.
      * @returns O resultado da transformação de um formato para outro.
      */
-    converterPorArquivo(caminhoArquivo: string): string {
+    async converterPorArquivo(caminhoArquivo: string): Promise<string> {
         const textoArquivo = sistemaArquivos.readFileSync(caminhoArquivo).toString();
         const xml = this.avaliadorXml.xmlParse(textoArquivo);
-        return this.processadorXslt.xsltProcess(xml, this.especificacao);
+        return await this.processadorXslt.xsltProcess(xml, this.especificacao);
     }
 
     /**
@@ -32,12 +32,12 @@ export abstract class ConversorComum {
      * @param caminhoArquivo O caminho do arquivo. Deve ser absoluto.
      * @returns O resultado da transformação de um formato para outro.
      */
-    converterPorTexto(texto: string) {
+    async converterPorTexto(texto: string): Promise<string> {
         if (!texto) {
-            return "";
+            return Promise.resolve("");
         }
 
         const xml = this.avaliadorXml.xmlParse(texto);
-        return this.processadorXslt.xsltProcess(xml, this.especificacao);
+        return await this.processadorXslt.xsltProcess(xml, this.especificacao);
     }
 }

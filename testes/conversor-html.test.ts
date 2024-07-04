@@ -7,17 +7,17 @@ describe("Conversor HTML", () => {
         conversorHtml = new ConversorHtml();
     });
 
-    it("Vazio", () => {
-        const resultado = conversorHtml.converterPorTexto("");
+    it("Vazio", async () => {
+        const resultado = await conversorHtml.converterPorTexto("");
         expect(resultado).toBe("");
     });
 
-    it("Trivial", () => {
-        const resultado = conversorHtml.converterPorTexto("<html></html>");
+    it("Trivial", async () => {
+        const resultado = await conversorHtml.converterPorTexto("<html></html>");
         expect(resultado).toBeTruthy();
     });
 
-    it("Cabeça e corpo", () => {
+    it("Cabeça e corpo", async () => {
         const html = `<!DOCTYPE html>
         <html>
         <head>
@@ -47,7 +47,7 @@ describe("Conversor HTML", () => {
             `</corpo>`+
             `</lmht>`;
             
-        const resultado = conversorHtml.converterPorTexto(html);
+        const resultado = await conversorHtml.converterPorTexto(html);
         expect(resultado).toBe(resultadoEsperadoLmht);
     });
 });

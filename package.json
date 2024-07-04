@@ -9,10 +9,10 @@
   },
   "scripts": {
     "copiar-arquivos": "yarn copy-files-from-to",
-    "empacotar": "rimraf ./dist && tsc && yarn copiar-arquivos",
+    "empacotar": "yarn rimraf ./dist && tsc && yarn copiar-arquivos",
     "publicar-npm": "npm publish ./dist --access public",
     "testes-unitarios": "jest --coverage",
-    "testes-unitarios:insignias": "jest-coverage-badges --output ./recursos/imagens"
+    "testes-unitarios:insignias": "yarn jest-coverage-badges --output ./recursos/imagens"
   },
   "author": "Leonel Sanches da Silva",
   "license": "MIT",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "jsdom": "^21.1.1",
-    "xslt-processor": "^3.0.0"
+    "xslt-processor": "^3.0.1"
   },
   "devDependencies": {
     "@types/jest": "^29.5.4",

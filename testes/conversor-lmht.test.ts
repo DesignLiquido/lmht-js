@@ -7,13 +7,13 @@ describe("Conversor LMHT", () => {
         conversorLmht = new ConversorLmht();
     });
 
-    it("Vazio", () => {
-        const resultado = conversorLmht.converterPorTexto("");
+    it("Vazio", async () => {
+        const resultado = await conversorLmht.converterPorTexto("");
         expect(resultado).toBe("");
     });
 
-    it("Trivial", () => {
-        const resultado = conversorLmht.converterPorTexto("<lmht></lmht>");
+    it("Trivial", async () => {
+        const resultado = await conversorLmht.converterPorTexto("<lmht></lmht>");
         expect(resultado).toBeTruthy();
     });
 });

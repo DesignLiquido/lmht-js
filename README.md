@@ -1,6 +1,6 @@
 # lmht-js
 
-Biblioteca de transformação de documentos [LMHT](https://github.com/DesignLiquido/LMHT) para HTML para JavaScript.
+Biblioteca de transformação de documentos [LMHT](https://github.com/DesignLiquido/LMHT) para HTML, para JavaScript e TypeScript.
 
 <p align="center">
     <a href="https://github.com/DesignLiquido/lmht-js/issues" target="_blank">
@@ -24,7 +24,67 @@ Biblioteca de transformação de documentos [LMHT](https://github.com/DesignLiqu
 
 ## Formas de uso
 
-### Atual, versão 0.3.0 em diante
+### Versão 0.5.0 ou superiores
+
+```js
+import { ConversorLmht } from "@designliquido/lmht-js";
+
+const conversorLmht = new ConversorLmht();
+// Ou
+const resultado = await conversorLmht.converterPorArquivo("meu-arquivo.lmht");
+console.log(resultado);
+
+// Ou
+conversorLmht.converterPorArquivo("meu-arquivo.lmht").then(resultado => {
+    console.log(resultado);
+});
+```
+
+```js
+import { ConversorLmht } from "@designliquido/lmht-js";
+
+const conversorLmht = new ConversorLmht();
+// Ou
+const resultado = await conversorLmht.converterPorTexto("<lmht><cabeca><titulo>Teste</titulo></cabeca><corpo>Teste</corpo></lmht>");
+console.log(resultado); // Resultado: <html><head><title>Teste</title></head><body>Teste</body></html>
+
+// Ou
+conversorLmht.converterPorTexto("<lmht><cabeca><titulo>Teste</titulo></cabeca><corpo>Teste</corpo></lmht>").then(resultado => {
+    console.log(resultado); // Resultado: <html><head><title>Teste</title></head><body>Teste</body></html>
+});
+```
+
+```js
+import { ConversorHtml } from "@designliquido/lmht-js";
+
+const conversorHtml = new ConversorHtml();
+// Ou
+const resultado = await conversorHtml.converterPorArquivo("meu-arquivo.html");
+console.log(resultado);
+
+// Ou
+conversorHtml.converterPorArquivo("meu-arquivo.html").then(resultado => {
+    console.log(resultado);
+});
+```
+
+```js
+import { ConversorHtml } from "@designliquido/lmht-js";
+
+const conversorHtml = new ConversorHtml();
+// Ou
+const resultado = await conversorHtml.converterPorTexto("<html><head><title>Teste</title></head><body>Teste</body></html>");
+console.log(resultado); // Resultado: <lmht><cabeca><titulo>Teste</titulo></cabeca><corpo>Teste</corpo></lmht>
+
+// Ou
+conversorHtml.converterPorTexto("<html><head><title>Teste</title></head><body>Teste</body></html>").then(resultado => {
+    console.log(resultado); // Resultado: <lmht><cabeca><titulo>Teste</titulo></cabeca><corpo>Teste</corpo></lmht>
+});
+```
+
+### Versão 0.3.0 até versão 0.4.9
+
+Os métodos de conversão são síncronos:
 
 ```js
 import { ConversorLmht } from "@designliquido/lmht-js";
@@ -60,7 +120,7 @@ console.log(resultado); // Resultado: <lmht><cabeca><titulo>Teste</titulo></cabe
 
 ### Até a versão 0.2.0
 
-Em versões anteriores, os métodos de conversão eram assíncronos.
+Os métodos de conversão são assíncronos.
 
 ```js
 import { ConversorLmht } from "@designliquido/lmht-js";
@@ -88,16 +148,22 @@ conversorHtml.converterPorArquivo("meu-arquivo.lmht").then(resultado => {
 git submodule update --init --recursive --remote
 ```
 
+## Versões 0.3.0 até 0.4.9, usando `xslt-processor`, e mudanças na versão 0.5.0
+
+Na versão 0.3.0, tomamos a decisão de mudar para a biblioteca [`xslt-processor`](https://github.com/DesignLiquido/xslt-processor), 100% em código aberto, licença MIT, e mantida pela Design Líquido. Não apenas os _bugs_ que tínhamos com a biblioteca anterior, `saxon-js`, são totalmente evitados como também a implementação de `xslt-processor` privilegia o projeto de LMHT.
+
+Isso fez com que os métodos se tornassem síncronos. Depois da versão 3.0.0 de `xslt-processor`, em que o comando `<xsl:include>` foi implementado, o processamento de transformações XSLT passou a ser novamente assíncrono. O comando `<xsl:include>` exige um acesso a um sistema de arquivos ou um recurso na internet, o que pede para que todo o processo seja assíncrono. Para esta biblioteca, os comandos de conversão voltam a ser assíncronos na versão 0.5.0.
+
 ## Versão 0.2.0 e `saxon-js`
 
 Até a versão 0.2.0, usávamos a biblioteca [`saxon-js`](https://www.npmjs.com/package/saxon-js). Essa biblioteca tornou-se um problema por alguns motivos:
 
-- Documentação incompleta e de baixa qualidade: https://www.saxonica.com/saxon-js/documentation2/index.html;
+- Documentação incompleta, em inglês e de baixa qualidade: https://www.saxonica.com/saxon-js/documentation2/index.html;
 - [Apesar de ter uma licença gratuita](https://www.saxonica.com/saxon-js/documentation2/index.html#!conditions/public-license), os fontes não são abertos;
-- Escrita em JavaScript puro e tipagem fraca;
-- Não funciona se usada em uma extensão do Visual Studio Code, que em teoria é Node.js, mas algo acontece ao importarmos a dependência e um erro aparece.
+- Escrita em JavaScript puro e tipagem fraca, além de ter uma parte compilada em C;
+- Não funciona se usada em uma extensão do Visual Studio Code, que em teoria é Node.js, mas algo acontece ao importarmos a dependência e um erro estranho aparece.
 
-Mantemos o suporte a versões anteriores por questões de retrocompatibilidade. A biblioteca atual usada para processamento XSLT é a [`xslt-processor`](https://github.com/DesignLiquido/xslt-processor), de código aberto e também mantida pela Design Líquido.
+Mantemos o suporte a versões anteriores por questões de retrocompatibilidade. 
 
 ### Especificação e arquivos `.sef.json`
 
