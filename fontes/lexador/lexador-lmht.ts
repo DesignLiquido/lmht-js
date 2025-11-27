@@ -41,12 +41,16 @@ export class LexadorLmht {
                 
             case '>':
                 this.adicionarToken(TipoToken.MAIOR_QUE, '>');
+                // Após fechar uma tag, verificar se há texto até a próxima tag
+                this.analisarTextoEntreTags();
                 break;
                 
             case '/':
                 if (this.verificar('>')) {
                     this.avancar();
                     this.adicionarToken(TipoToken.BARRA_MAIOR_QUE, '/>');
+                    // Após tag auto-fechante, verificar texto
+                    this.analisarTextoEntreTags();
                 } else {
                     this.adicionarToken(TipoToken.BARRA, '/');
                 }
@@ -82,6 +86,40 @@ export class LexadorLmht {
                     this.erros.push(`Caractere inesperado '${char}' na linha ${this.linha}, coluna ${this.coluna}`);
                 }
                 break;
+        }
+    }
+    
+    private analisarTextoEntreTags(): void {
+        const inicio = this.posicao;
+        let temConteudo = false;
+        
+        // Pular espaços em branco iniciais
+        while (!this.estaNoFim() && (this.atual() === ' ' || this.atual() === '\t' || this.atual() === '\r' || this.atual() === '\n')) {
+            if (this.atual() === '\n') {
+                this.linha++;
+                this.coluna = 1;
+            }
+            this.avancar();
+        }
+        
+        const inicioTexto = this.posicao;
+        
+        // Ler texto até encontrar '<'
+        while (!this.estaNoFim() && this.atual() !== '<') {
+            temConteudo = true;
+            if (this.avancar() === '\n') {
+                this.linha++;
+                this.coluna = 1;
+            }
+        }
+        
+        if (temConteudo) {
+            const textoCompleto = this.codigo.substring(inicioTexto, this.posicao);
+            // Remover espaços em branco do final
+            const texto = textoCompleto.trimEnd();
+            if (texto.length > 0) {
+                this.adicionarToken(TipoToken.TEXTO, texto);
+            }
         }
     }
     

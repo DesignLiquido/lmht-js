@@ -14,35 +14,38 @@ describe('Lexador LMHT', () => {
                 const resultado = lexador.mapear('<lmht>');
 
                 expect(resultado.erros).toHaveLength(0);
-                expect(resultado.tokens).toHaveLength(3);
+                expect(resultado.tokens).toHaveLength(4); // Inclui EOF
                 expect(resultado.tokens[0].tipo).toBe(TipoToken.MENOR_QUE);
                 expect(resultado.tokens[1].tipo).toBe(TipoToken.IDENTIFICADOR);
                 expect(resultado.tokens[1].lexema).toBe('lmht');
                 expect(resultado.tokens[2].tipo).toBe(TipoToken.MAIOR_QUE);
+                expect(resultado.tokens[3].tipo).toBe(TipoToken.EOF);
             });
 
             it('Trivial - Tag de fechamento simples', () => {
                 const resultado = lexador.mapear('</lmht>');
 
                 expect(resultado.erros).toHaveLength(0);
-                expect(resultado.tokens).toHaveLength(3);
+                expect(resultado.tokens).toHaveLength(4); // Inclui EOF
                 expect(resultado.tokens[0].tipo).toBe(TipoToken.MENOR_QUE_BARRA);
                 expect(resultado.tokens[0].lexema).toBe('</');
                 expect(resultado.tokens[1].tipo).toBe(TipoToken.IDENTIFICADOR);
                 expect(resultado.tokens[1].lexema).toBe('lmht');
                 expect(resultado.tokens[2].tipo).toBe(TipoToken.MAIOR_QUE);
+                expect(resultado.tokens[3].tipo).toBe(TipoToken.EOF);
             });
 
             it('Trivial - Tag auto-fechante', () => {
                 const resultado = lexador.mapear('<imagem />');
 
                 expect(resultado.erros).toHaveLength(0);
-                expect(resultado.tokens).toHaveLength(3);
+                expect(resultado.tokens).toHaveLength(4); // Inclui EOF
                 expect(resultado.tokens[0].tipo).toBe(TipoToken.MENOR_QUE);
                 expect(resultado.tokens[1].tipo).toBe(TipoToken.IDENTIFICADOR);
                 expect(resultado.tokens[1].lexema).toBe('imagem');
                 expect(resultado.tokens[2].tipo).toBe(TipoToken.BARRA_MAIOR_QUE);
                 expect(resultado.tokens[2].lexema).toBe('/>');
+                expect(resultado.tokens[3].tipo).toBe(TipoToken.EOF);
             });
 
             it('Trivial - Tag com hífen no nome', () => {
@@ -67,7 +70,7 @@ describe('Lexador LMHT', () => {
                 const resultado = lexador.mapear('<p classe="minha-classe">');
 
                 expect(resultado.erros).toHaveLength(0);
-                expect(resultado.tokens).toHaveLength(5);
+                expect(resultado.tokens).toHaveLength(7); // Inclui > e EOF
                 expect(resultado.tokens[1].tipo).toBe(TipoToken.IDENTIFICADOR);
                 expect(resultado.tokens[1].lexema).toBe('p');
                 expect(resultado.tokens[2].tipo).toBe(TipoToken.IDENTIFICADOR);
@@ -89,7 +92,7 @@ describe('Lexador LMHT', () => {
                 const resultado = lexador.mapear('<imagem fonte="logo.png" alt="Logo" largura="100">');
 
                 expect(resultado.erros).toHaveLength(0);
-                expect(resultado.tokens).toHaveLength(11);
+                expect(resultado.tokens).toHaveLength(13); // Inclui > e EOF
                 
                 // Primeiro atributo: fonte="logo.png"
                 expect(resultado.tokens[2].lexema).toBe('fonte');
@@ -352,6 +355,13 @@ describe('Lexador LMHT', () => {
                     .map(t => t.lexema);
                 
                 expect(identificadores).toEqual(['a', 'b', 'c', 'd', 'e', 'e', 'd', 'c', 'b', 'a']);
+                
+                // Verificar que o texto foi capturado
+                const textos = resultado.tokens
+                    .filter(t => t.tipo === TipoToken.TEXTO)
+                    .map(t => t.lexema);
+                
+                expect(textos).toContain('conteúdo');
             });
 
             it('Comum - Atributos sem espaços', () => {
