@@ -1,0 +1,103 @@
+export const MAPEAMENTO_TAGS: { [key: string]: string } = {
+    // Estrutura principal
+    'lmht': 'html',
+    'cabeca': 'head',
+    'corpo': 'body',
+    'titulo': 'title',
+    
+    // Títulos
+    'titulo1': 'h1',
+    'titulo2': 'h2',
+    'titulo3': 'h3',
+    'titulo4': 'h4',
+    'titulo5': 'h5',
+    'titulo6': 'h6',
+    
+    // Texto
+    'paragrafo': 'p',
+    'p': 'p',
+    'negrito': 'strong',
+    'italico': 'em',
+    'sublinhado': 'u',
+    'codigo': 'code',
+    'pre-formatado': 'pre',
+    'citacao': 'blockquote',
+    'pequeno': 'small',
+    'marcado': 'mark',
+    'deletado': 'del',
+    'inserido': 'ins',
+    'subscrito': 'sub',
+    'sobrescrito': 'sup',
+    
+    // Listas
+    'lista-simples': 'ul',
+    'lista-ordenada': 'ol',
+    'item-lista': 'li',
+    'lista-definicao': 'dl',
+    'termo-definicao': 'dt',
+    'descricao-definicao': 'dd',
+    
+    // Links e mídia
+    'ligacao': 'a',
+    'imagem': 'img',
+    'video': 'video',
+    'audio': 'audio',
+    'fonte-midia': 'source',
+    'subpagina': 'iframe',
+    
+    // Tabelas
+    'tabela': 'table',
+    'linha-tabela': 'tr',
+    'celula-cabecalho': 'th',
+    'celula-dados': 'td',
+    'cabeca-tabela': 'thead',
+    'corpo-tabela': 'tbody',
+    'rodape-tabela': 'tfoot',
+    'legenda-tabela': 'caption',
+    'grupo-coluna': 'colgroup',
+    'coluna': 'col',
+    
+    // Formulários
+    'formulario': 'form',
+    'entrada-texto': 'input',
+    'area-texto': 'textarea',
+    'botao': 'button',
+    'selecao': 'select',
+    'opcao': 'option',
+    'rotulo': 'label',
+    'conjunto-campos': 'fieldset',
+    'legenda': 'legend',
+    'lista-dados': 'datalist',
+    
+    // Estrutura semântica
+    'secao': 'section',
+    'artigo': 'article',
+    'navegacao': 'nav',
+    'lateral': 'aside',
+    'cabecalho': 'header',
+    'rodape': 'footer',
+    'principal': 'main',
+    'figura': 'figure',
+    'legenda-figura': 'figcaption',
+    'endereco': 'address',
+    
+    // Outros
+    'divisao': 'div',
+    'div': 'div',
+    'trecho': 'span',
+    'quebra-linha': 'br',
+    'linha-horizontal': 'hr',
+    'estilo': 'style',
+    'script': 'script',
+    'meta-dados': 'meta',
+    'ligacao-estilo': 'link',
+    'base': 'base',
+    'detalhes': 'details',
+    'sumario': 'summary',
+    'dialogo': 'dialog',
+    'medidor': 'meter',
+    'progresso': 'progress',
+    'tela': 'canvas',
+    'grafico-vetorial': 'svg',
+    'tempo': 'time',
+};
