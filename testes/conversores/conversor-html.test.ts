@@ -1,4 +1,4 @@
-import { ConversorHtml } from "../conversor-html"
+import { ConversorHtml } from "../../fontes/conversores/conversor-html";
 
 describe("Conversor HTML", () => {
     let conversorHtml: ConversorHtml;

@@ -8,7 +8,7 @@ export class ConversorHtml extends ConversorComum {
     constructor() {
         super();
         this.processadorXslt = new Xslt({ selfClosingTags: true });
-        const caminhoEspecificacao = caminho.join(__dirname, "./especificacao/lmht-reverso-xml10.xslt");
+        const caminhoEspecificacao = caminho.join(__dirname, "../../especificacao/lmht-reverso-xml10.xslt");
 
         const textoEspecificacao = sistemaArquivos.readFileSync(caminhoEspecificacao).toString();
         this.especificacao = this.avaliadorXml.xmlParse(textoEspecificacao);

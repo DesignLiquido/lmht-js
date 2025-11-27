@@ -11,7 +11,7 @@ export class ConversorLmht extends ConversorComum {
     constructor() {
         super();
         this.processadorXslt = new Xslt({ selfClosingTags: false });
-        const caminhoEspecificacao = caminho.join(__dirname, "./especificacao/lmht10.xslt");
+        const caminhoEspecificacao = caminho.join(__dirname, "../../especificacao/lmht10.xslt");
 
         const textoEspecificacao = sistemaArquivos.readFileSync(caminhoEspecificacao).toString();
         this.especificacao = this.avaliadorXml.xmlParse(textoEspecificacao);

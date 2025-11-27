@@ -1,4 +1,4 @@
-import { ConversorLmht } from "../conversor-lmht"
+import { ConversorLmht } from "../../fontes/conversores/conversor-lmht";
 
 describe("Conversor LMHT", () => {
     let conversorLmht: ConversorLmht;
