@@ -74,11 +74,16 @@ export class FormatadorLmht {
         // Verificar se elemento está vazio
         const elementoVazio = elemento.filhos.length === 0;
 
+        // Verificar se deve quebrar atributos em múltiplas linhas
+        const tagAberturaCompleta = this.construirTagAbertura(elemento.nome, atributos, elemento.autoFechante);
+        const deveQuebrarAtributos = (this.quebrarAtributosEmLinhas && atributos.length > 2) ||
+                                     tagAberturaCompleta.length > this.limiteCaracteresPorLinha;
+
         // Tag de abertura com indentação
         this.adicionarIdentacao();
 
         // Para elementos com apenas texto inline, formatar em uma linha
-        if (temApenasTexto) {
+        if (temApenasTexto && !deveQuebrarAtributos) {
             const tagAbertura = this.construirTagAbertura(elemento.nome, atributos, false);
             this.codigoFormatado += tagAbertura.replace('>', '');
             this.codigoFormatado += '>';
@@ -90,29 +95,20 @@ export class FormatadorLmht {
             return;
         }
 
-        // Para elementos vazios, formatar em uma linha
-        if (elementoVazio) {
-            const tagAbertura = this.construirTagAbertura(elemento.nome, atributos, elemento.autoFechante);
+        // Para elementos vazios sem quebra de atributos, formatar em uma linha
+        if (elementoVazio && !deveQuebrarAtributos && !elemento.autoFechante) {
+            const tagAbertura = this.construirTagAbertura(elemento.nome, atributos, false);
             this.codigoFormatado += tagAbertura;
-            
-            if (!elemento.autoFechante) {
-                this.codigoFormatado += '</' + elemento.nome + '>';
-            }
-            
+            this.codigoFormatado += '</' + elemento.nome + '>';
             this.adicionarQuebraLinha();
             return;
         }
 
-        const tagAbertura = this.construirTagAbertura(elemento.nome, atributos, elemento.autoFechante);
-
-        // Verificar se deve quebrar atributos em múltiplas linhas
-        const deveQuebrarAtributos = this.quebrarAtributosEmLinhas && 
-                                     atributos.length > 2 ||
-                                     tagAbertura.length > this.limiteCaracteresPorLinha;
-
+        // Formatar tag com atributos quebrados ou normal
         if (deveQuebrarAtributos && atributos.length > 0) {
             this.formatarTagComAtributosQuebrados(elemento.nome, atributos, elemento.autoFechante);
         } else {
+            const tagAbertura = this.construirTagAbertura(elemento.nome, atributos, elemento.autoFechante);
             this.codigoFormatado += tagAbertura;
         }
 
