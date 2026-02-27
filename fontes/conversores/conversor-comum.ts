@@ -1,7 +1,6 @@
 import * as sistemaArquivos from 'fs';
 
-import { Xslt, XmlParser } from 'xslt-processor';
-import { XDocument } from 'xslt-processor/dom';
+import { Xslt, XmlParser, XDocument } from 'xslt-processor';
 
 export abstract class ConversorComum {
     especificacao: XDocument;

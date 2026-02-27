@@ -24,7 +24,72 @@ Biblioteca de transformação de documentos [LMHT](https://github.com/DesignLiqu
 
 ## Formas de uso
 
+### Versão 0.6.0 ou superiores — fluxo Lexador → Avaliador Sintático → Tradutor
+
+A partir da versão 0.6.0 é possível usar cada etapa da pipeline de transformação diretamente, o que permite inspecionar tokens e a árvore sintática (AST) antes de gerar o HTML.
+
+```js
+import { LexadorLmht, AvaliadorSintaticoLmht, TradutorHtml } from "@designliquido/lmht-js";
+
+const lexador = new LexadorLmht();
+const avaliadorSintatico = new AvaliadorSintaticoLmht();
+const tradutor = new TradutorHtml();
+
+const codigo = `<lmht><cabeca><titulo>Teste</titulo></cabeca><corpo>Olá, mundo!</corpo></lmht>`;
+
+// 1. Lexar: transforma o texto em tokens
+const retornoLexador = lexador.mapear(codigo);
+
+// 2. Analisar: transforma os tokens em uma árvore sintática
+const retornoAvaliador = avaliadorSintatico.analisar(retornoLexador.tokens);
+
+// 3. Traduzir: transforma a árvore sintática em HTML
+const html = tradutor.traduzir(retornoAvaliador.arvore);
+console.log(html);
+// Resultado:
+// <!DOCTYPE html>
+// <html>
+//   <head>
+//     <title>Teste</title>
+//   </head>
+//   <body>Olá, mundo!</body>
+// </html>
+```
+
+O `TradutorHtml` aceita opções de formatação e também permite verificar erros de cada etapa:
+
+```js
+import { LexadorLmht, AvaliadorSintaticoLmht, TradutorHtml } from "@designliquido/lmht-js";
+
+const tradutor = new TradutorHtml({
+    identacao: 4,                // Número de espaços por nível de identação (padrão: 2)
+    usarTabulacao: false,        // Usar tabulação em vez de espaços (padrão: false)
+    formatarSaida: true,         // Formatar a saída com quebras de linha (padrão: true)
+    preservarComentarios: true,  // Preservar comentários na saída HTML (padrão: false)
+    incluirDeclaracaoXml: false, // Incluir declaração <?xml ...?> (padrão: false)
+    incluirDocType: true,        // Incluir <!DOCTYPE html> (padrão: true)
+});
+
+const lexador = new LexadorLmht();
+const avaliadorSintatico = new AvaliadorSintaticoLmht();
+
+const codigo = `<lmht><cabeca><titulo>Teste</titulo></cabeca><corpo>Olá, mundo!</corpo></lmht>`;
+
+const { tokens, erros: errosLexador } = lexador.mapear(codigo);
+const { arvore, erros: errosAvaliador } = avaliadorSintatico.analisar(tokens);
+
+if (errosLexador.length > 0 || errosAvaliador.length > 0) {
+    console.error("Erros:", [...errosLexador, ...errosAvaliador]);
+} else {
+    console.log(tradutor.traduzir(arvore));
+}
+```
+
 ### Versão 0.5.0 ou superiores
+
+Até esta versão, apenas os métodos de conversão usando transformação XSLT estavam disponíveis. Entre as opções de conversão, há `converterPorArquivo` e `converterPorTexto`, ambos para LMHT e HTML. Os métodos de conversão são assíncronos, e retornam uma `Promise` que resolve para o resultado da conversão.
+
+#### Exemplos de LMHT para HTML
 
 ```js
 import { ConversorLmht } from "@designliquido/lmht-js";
@@ -53,6 +118,8 @@ conversorLmht.converterPorTexto("<lmht><cabeca><titulo>Teste</titulo></cabeca><c
     console.log(resultado); // Resultado: <html><head><title>Teste</title></head><body>Teste</body></html>
 });
 ```
+
+#### Exemplos de HTML para LMHT
 
 ```js
 import { ConversorHtml } from "@designliquido/lmht-js";
@@ -84,7 +151,7 @@ conversorHtml.converterPorTexto("<html><head><title>Teste</title></head><body>Te
 
 ### Versão 0.3.0 até versão 0.4.9
 
-Os métodos de conversão são síncronos:
+Os métodos de conversão são os mesmos, mas são síncronos:
 
 ```js
 import { ConversorLmht } from "@designliquido/lmht-js";

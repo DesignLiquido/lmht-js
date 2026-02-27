@@ -108,3 +108,7 @@ package-lock.json
 
 # Projeto
 dist/
+
+# Claude
+CLAUDE.md
+.claude/
