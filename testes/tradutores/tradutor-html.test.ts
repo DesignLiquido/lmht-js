@@ -505,6 +505,173 @@ describe('Tradutor HTML', () => {
             });
         });
 
+        describe('Tags acentuadas (formas alternativas)', () => {
+            it('Acentuado - cabeça (head)', () => {
+                expect(traduzir('<cabeça></cabeça>')).toBe('<head></head>');
+            });
+
+            it('Acentuado - título (title)', () => {
+                expect(traduzir('<título></título>')).toBe('<title></title>');
+            });
+
+            it('Acentuado - título1 (h1)', () => {
+                expect(traduzir('<título1></título1>')).toBe('<h1></h1>');
+            });
+
+            it('Acentuado - título2 (h2)', () => {
+                expect(traduzir('<título2></título2>')).toBe('<h2></h2>');
+            });
+
+            it('Acentuado - parágrafo (p)', () => {
+                expect(traduzir('<parágrafo></parágrafo>')).toBe('<p></p>');
+            });
+
+            it('Acentuado - itálico (em)', () => {
+                expect(traduzir('<itálico></itálico>')).toBe('<em></em>');
+            });
+
+            it('Acentuado - código (code)', () => {
+                expect(traduzir('<código></código>')).toBe('<code></code>');
+            });
+
+            it('Acentuado - pré-formatado (pre)', () => {
+                expect(traduzir('<pré-formatado></pré-formatado>')).toBe('<pre></pre>');
+            });
+
+            it('Acentuado - citação (blockquote)', () => {
+                expect(traduzir('<citação></citação>')).toBe('<blockquote></blockquote>');
+            });
+
+            it('Acentuado - lista-definição (dl)', () => {
+                expect(traduzir('<lista-definição></lista-definição>')).toBe('<dl></dl>');
+            });
+
+            it('Acentuado - termo-definição (dt)', () => {
+                expect(traduzir('<termo-definição></termo-definição>')).toBe('<dt></dt>');
+            });
+
+            it('Acentuado - descrição-definição (dd)', () => {
+                expect(traduzir('<descrição-definição></descrição-definição>')).toBe('<dd></dd>');
+            });
+
+            it('Acentuado - ligação (a)', () => {
+                expect(traduzir('<ligação destino="/inicio"></ligação>')).toBe('<a href="/inicio"></a>');
+            });
+
+            it('Acentuado - áudio (audio)', () => {
+                expect(traduzir('<áudio></áudio>')).toBe('<audio></audio>');
+            });
+
+            it('Acentuado - fonte-mídia (source)', () => {
+                expect(traduzir('<fonte-mídia />')).toBe('<source />');
+            });
+
+            it('Acentuado - célula-cabeçalho (th)', () => {
+                expect(traduzir('<célula-cabeçalho></célula-cabeçalho>')).toBe('<th></th>');
+            });
+
+            it('Acentuado - célula-dados (td)', () => {
+                expect(traduzir('<célula-dados></célula-dados>')).toBe('<td></td>');
+            });
+
+            it('Acentuado - cabeça-tabela (thead)', () => {
+                expect(traduzir('<cabeça-tabela></cabeça-tabela>')).toBe('<thead></thead>');
+            });
+
+            it('Acentuado - formulário (form)', () => {
+                expect(traduzir('<formulário></formulário>')).toBe('<form></form>');
+            });
+
+            it('Acentuado - área-texto (textarea)', () => {
+                expect(traduzir('<área-texto></área-texto>')).toBe('<textarea></textarea>');
+            });
+
+            it('Acentuado - botão (button)', () => {
+                expect(traduzir('<botão></botão>')).toBe('<button></button>');
+            });
+
+            it('Acentuado - seleção (select)', () => {
+                expect(traduzir('<seleção></seleção>')).toBe('<select></select>');
+            });
+
+            it('Acentuado - opção (option)', () => {
+                expect(traduzir('<opção></opção>')).toBe('<option></option>');
+            });
+
+            it('Acentuado - seção (section)', () => {
+                expect(traduzir('<seção></seção>')).toBe('<section></section>');
+            });
+
+            it('Acentuado - navegação (nav)', () => {
+                expect(traduzir('<navegação></navegação>')).toBe('<nav></nav>');
+            });
+
+            it('Acentuado - cabeçalho (header)', () => {
+                expect(traduzir('<cabeçalho></cabeçalho>')).toBe('<header></header>');
+            });
+
+            it('Acentuado - rodapé (footer)', () => {
+                expect(traduzir('<rodapé></rodapé>')).toBe('<footer></footer>');
+            });
+
+            it('Acentuado - endereço (address)', () => {
+                expect(traduzir('<endereço></endereço>')).toBe('<address></address>');
+            });
+
+            it('Acentuado - divisão (div)', () => {
+                expect(traduzir('<divisão></divisão>')).toBe('<div></div>');
+            });
+
+            it('Acentuado - ligação-estilo (link)', () => {
+                expect(traduzir('<ligação-estilo />')).toBe('<link />');
+            });
+
+            it('Acentuado - sumário (summary)', () => {
+                expect(traduzir('<sumário></sumário>')).toBe('<summary></summary>');
+            });
+
+            it('Acentuado - diálogo (dialog)', () => {
+                expect(traduzir('<diálogo></diálogo>')).toBe('<dialog></dialog>');
+            });
+
+            it('Acentuado - gráfico-vetorial (svg)', () => {
+                expect(traduzir('<gráfico-vetorial></gráfico-vetorial>')).toBe('<svg></svg>');
+            });
+
+            it('Acentuado - formas mistas no mesmo documento', () => {
+                const codigo = '<cabecalho><navegação></navegação></cabecalho>';
+                expect(traduzir(codigo)).toBe('<header><nav></nav></header>');
+            });
+
+            it('Acentuado - documento completo com tags acentuadas', () => {
+                const codigo = `<lmht>
+                    <cabeça>
+                        <título>Teste Acentuado</título>
+                    </cabeça>
+                    <corpo>
+                        <cabeçalho>
+                            <título1>Título Principal</título1>
+                            <navegação></navegação>
+                        </cabeçalho>
+                        <principal>
+                            <seção>
+                                <parágrafo>Conteúdo</parágrafo>
+                            </seção>
+                        </principal>
+                        <rodapé><parágrafo>Fim</parágrafo></rodapé>
+                    </corpo>
+                </lmht>`;
+                const html = traduzir(codigo);
+                expect(html).toContain('<head>');
+                expect(html).toContain('<title>Teste Acentuado</title>');
+                expect(html).toContain('<header>');
+                expect(html).toContain('<nav>');
+                expect(html).toContain('<section>');
+                expect(html).toContain('<p>Conteúdo</p>');
+                expect(html).toContain('<footer>');
+            });
+        });
+
         describe('Tags não mapeadas', () => {
             it('Comum - Tag desconhecida mantém nome original', () => {
                 const html = traduzir('<tag-customizada></tag-customizada>');
